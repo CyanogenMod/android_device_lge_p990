@@ -57,7 +57,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
     vendor/lge/p990/proprietary/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin \
     vendor/lge/p990/proprietary/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
-    vendor/lge/p990/proprietary/lib/modules/wireless.ko:system/lib/modules/wireless.ko
+    device/lge/p990/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
 ## Hardware capabilities
 PRODUCT_COPY_FILES += \

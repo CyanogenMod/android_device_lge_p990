@@ -9,7 +9,6 @@ etc/wl
 etc/flex
 lib/egl
 lib/hw
-lib/modules
 "
 
 for DIR in $DIRS; do
@@ -24,8 +23,6 @@ etc/wl/nvram.txt
 etc/wl/rtecdc-apsta.bin 
 etc/wl/rtecdc-mfgtest.bin 
 etc/wl/rtecdc.bin 
-
-lib/modules/wireless.ko
 
 
 lib/hw/gralloc.tegra.so
