@@ -1,0 +1,14 @@
+#######################
+## Regular device mount
+##
+## Format: dev_mount <label> <mount_point> <part> <sysfs_path1...>
+## label        - Label for the volume
+## mount_point  - Where the volume will be mounted
+## part         - Partition # (1 based), or 'auto' for first usable partition.
+## <sysfs_path> - List of sysfs paths to source devices
+######################
+
+## 20100725, hyeseung.ryu@lge.com, Add 2nd external memory
+#dev_mount extsdcard /mnt/sdcard/_ExternalSD auto /devices/platform/tegra-sdhci.2/mmc_host/mmc1
+#dev_mount sdcard /mnt/sdcard  9 /devices/platform/tegra-sdhci.3/mmc_host/mmc2
+dev_mount sdcard /mnt/sdcard auto /devices/platform/tegra-sdhci.2/mmc_host/mmc1
