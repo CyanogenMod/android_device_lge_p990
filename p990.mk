@@ -124,6 +124,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/bin/hdmid:system/bin/hdmid \
     vendor/lge/p990/proprietary/bin/btld:system/bin/btld \
     vendor/lge/p990/proprietary/bin/bridgeutil:system/bin/bridgeutil \
+    device/lge/p990/init.vsnet:system/bin/init.vsnet \
     vendor/lge/p990/proprietary/lib/libril.so:system/lib/libril.so \
     vendor/lge/p990/proprietary/lib/libnvos.so:system/lib/libnvos.so \
     vendor/lge/p990/proprietary/lib/libnvrm.so:system/lib/libnvrm.so \
