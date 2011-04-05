@@ -59,6 +59,13 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
     device/lge/p990/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
+##GPS
+PRODUCT_COPY_FILES += \
+    device/lge/p990/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml \
+    vendor/lge/p990/proprietary/bin/glgps:system/bin/glgps \
+    vendor/lge/p990/proprietary/lib/libgps.so:obj/lib/libgps.so \
+    vendor/lge/p990/proprietary/lib/libgps.so:system/lib/libgps.so
+
 ## Hardware capabilities
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \

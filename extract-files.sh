@@ -65,6 +65,7 @@ bin/hdmid
 bin/btld
 bin/bridgeutil
 bin/BCM4329B1_002.002.023.0735.0745.hcd
+bin/glgps
 
 lib/libnvodm_imager.so
 lib/libnvddk_2d_v2.so

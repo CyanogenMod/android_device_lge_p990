@@ -382,6 +382,33 @@ on boot
     write /sys/class/rfkill/rfkill0/state 0
 ### End of LGE bluetooth
 
+### LGE GPS
+# gps permissions
+    chown system system /sys/devices/platform/tegra_gps_gpio/poweron
+    chown system system /sys/devices/platform/tegra_gps_gpio/reset
+    chown system system /dev/ttyHS3
+    mkdir /data/gps
+    chmod 777 /data/gps
+    mkdir /data/gps/var
+    chmod 777 /data/gps/var
+    mkdir /data/gps/var/run
+    chmod 777 /data/gps/var/run
+    mkdir /data/gps/log
+    chmod 777 /data/gps/log
+    mkdir /data/cache
+    chmod 777 /data/cache
+    chown system system /system/bin/glgps
+    chown system system /system/etc/gps_brcm_conf.xml
+    chown system system /system/etc/cert/
+    chown system system /system/etc/cert/537a0176.0
+    chown system system /system/etc/cert/c9dbfc2e.0
+    chown system system /system/etc/cert/ddc328ff.0
+    chown system system /system/etc/cert/7651b327.0
+    chown system system /system/etc/cert/583a21ed.0
+    chown system system /system/etc/cert/72fa7371.0
+    chown system system /system/etc/cert/c33a80d4.0
+
+### End of LGE GPS
 # Include extra init file
     import /system/etc/init.local.rc
 
@@ -447,6 +474,7 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
     onrestart write /sys/power/state on
     onrestart restart media
     onrestart restart netd
+    onrestart restart ril-daemon
 
 service media /system/bin/mediaserver
     user media
@@ -554,10 +582,11 @@ service hdmid /system/bin/hdmid
     group system
     disabled
 
-service immvibed /system/bin/immvibed
-    user shell
-    group shell
-    oneshot
+## disable immersion vibrator, we want the standard API
+#service immvibed /system/bin/immvibed
+#    user shell
+#    group shell
+#    oneshot
 
 service nvrm_daemon /system/bin/nvrm_daemon
     user root
@@ -603,3 +632,8 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+
+service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
+    user system
+    group net_raw sdcard_rw system
+
