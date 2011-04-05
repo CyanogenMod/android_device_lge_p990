@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="config_animateScreenLights">false</bool>
+    <bool name="config_disableMenuKeyInLockScreen">true</bool>
+    <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
+
+    <!-- Component name of the service providing network location support. -->
+    <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
+
+    <!-- Component name of the service providing geocoder API support. -->
+    <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
+
+    <string-array translatable="false" name="config_tether_usb_regexs">
+    <item>"usb0"</item>
+    </string-array>
+
+    <string-array translatable="false" name="config_tether_upstream_regexs">
+        <item>"wlan0"</item>
+        <item>"vsnet\\d"</item>
+    </string-array>
+
+
+</resources>
