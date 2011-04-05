@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="config_animateScreenLights">false</bool>
+    <!-- This is causing problems on resume -->
+    <bool name="config_animateScreenLights">true</bool>
+
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
 
