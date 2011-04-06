@@ -22,3 +22,4 @@
 /dev/drm		0600	system	system
 /dev/motion_daemon	0666	system	system
 /dev/accel_daemon	0666	system	system
+/dev/tegra_user_gpio	0666	system	system
