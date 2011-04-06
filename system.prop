@@ -13,3 +13,6 @@ dalvik.vm.heapsize=32m
 
 # hold precise GC data, and use SMP
 dalvik.vm.dexopt-flags=m=y,u=n
+
+# Mount the internal SD card, too
+ro.additionalmounts=/mnt/internalsd
