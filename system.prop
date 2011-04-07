@@ -16,3 +16,6 @@ dalvik.vm.dexopt-flags=m=y,u=n
 
 # Mount the internal SD card, too
 ro.additionalmounts=/mnt/internalsd
+
+# GSM, WCDMA preferred
+ro.telephony.default_network=0
