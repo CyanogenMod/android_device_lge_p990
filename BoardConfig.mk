@@ -63,3 +63,5 @@ BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p990/vibrator.c
 
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 9
+
+TARGET_RECOVERY_PRE_COMMAND := "/system/bin/setup-recovery"

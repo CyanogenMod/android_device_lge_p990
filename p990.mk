@@ -172,8 +172,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/lib/libaudiopolicy.so:system/lib/libaudiopolicy.so
 
 PRODUCT_COPY_FILES += \
-    device/lge/p990/prebuilt/rild:system/bin/rild
-
+    device/lge/p990/prebuilt/rild:system/bin/rild \
+    device/lge/p990/prebuilt/setup-recovery:system/bin/setup-recovery
 
 $(call inherit-product, build/target/product/full_base.mk)
 
