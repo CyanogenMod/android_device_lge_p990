@@ -47,7 +47,8 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
 BOARD_WLAN_DEVICE := bcm4329
-WIFI_DRIVER_FW_STA_PATH		:= "/system/etc/wl/rtecdc-apsta.bin"
+WIFI_DRIVER_FW_STA_PATH		:= "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH		:= "/system/etc/wl/rtecdc-apsta.bin"
 WIFI_DRIVER_MODULE_NAME		:= "wireless"
 WIFI_DRIVER_MODULE_PATH		:= "/system/lib/modules/wireless.ko"
 WIFI_DRIVER_MODULE_ARG		:= "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
