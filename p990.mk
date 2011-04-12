@@ -80,13 +80,25 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 PRODUCT_COPY_FILES += \
-    device/lge/p990/vold.fstab:system/etc/vold.fstab
+    device/lge/p990/vold.fstab:system/etc/vold.fstab \
+    device/lge/p990/media_profiles.xml:system/etc/media_profiles.xml
 
 ## OMX
 PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/etc/pvnvomx.cfg:system/etc/pvnvomx.cfg \
-    vendor/lge/p990/proprietary/lib/libpvnvomx.so:system/lib/libpvnvomx.so
+    vendor/lge/p990/proprietary/lib/libpvnvomx.so:system/lib/libpvnvomx.so \
+    vendor/lge/p990/proprietary/lib/libdivxdrm.so:system/lib/libdivxdrm.so \
+    vendor/lge/p990/proprietary/lib/liblge_divxdrm.so:system/lib/liblge_divxdrm.so \
+    vendor/lge/p990/proprietary/lib/libtsparser.so:system/lib/libtsparser.so \
+    vendor/lge/p990/proprietary/lib/libhwmediaplugin.so:system/lib/libhwmediaplugin.so \
+    vendor/lge/p990/proprietary/lib/libhwmediaplugin.so:obj/lib/libhwmediaplugin.so \
+    vendor/lge/p990/proprietary/lib/libhwmediarecorder.so:system/lib/libhwmediarecorder.so \
+    vendor/lge/p990/proprietary/lib/libhwmediarecorder.so:obj/lib/libhwmediarecorder.so \
+    vendor/lge/p990/proprietary/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so
 
+    #vendor/lge/p990/proprietary/bin/secureclockd:system/bin/secureclockd \
+    vendor/lge/p990/proprietary/lib/libsecureclock.so:system/lib/libsecureclock.so \
+    vendor/lge/p990/proprietary/lib/libbridge.so:system/lib/libbridge.so \#
 PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/etc/flex/flex.db:system/etc/flex/flex.db \
     vendor/lge/p990/proprietary/etc/flex/flex.xml:system/etc/flex/flex.xml \
@@ -95,7 +107,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/bin/nvrm_daemon:system/bin/nvrm_daemon \
     vendor/lge/p990/proprietary/bin/nvrm_avp.axf:system/bin/nvrm_avp.axf \
     vendor/lge/p990/proprietary/bin/nvddk_audiofx_core.axf:system/bin/nvddk_audiofx_core.axf \
-    vendor/lge/p990/proprietary/bin/secureclockd:system/bin/secureclockd \
     vendor/lge/p990/proprietary/bin/nvrm_avp.axf:system/bin/nvrm_avp.axf \
     vendor/lge/p990/proprietary/bin/nvmm_wmaprodec.axf:system/bin/nvmm_wmaprodec.axf \
     vendor/lge/p990/proprietary/bin/nvmm_wmadec.axf:system/bin/nvmm_wmadec.axf \
@@ -128,8 +139,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/lib/libril.so:system/lib/libril.so \
     vendor/lge/p990/proprietary/lib/libnvos.so:system/lib/libnvos.so \
     vendor/lge/p990/proprietary/lib/libnvrm.so:system/lib/libnvrm.so \
-    vendor/lge/p990/proprietary/lib/libbridge.so:system/lib/libbridge.so \
     vendor/lge/p990/proprietary/lib/lge-ril.so:system/lib/lge-ril.so \
+    vendor/lge/p990/proprietary/lib/libnvapputil.so:system/lib/libnvapputil.so \
     vendor/lge/p990/proprietary/lib/libnvmm_camera.so:system/lib/libnvmm_camera.so \
     vendor/lge/p990/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
     vendor/lge/p990/proprietary/lib/libcamera.so:system/lib/libcamera.so \
@@ -163,7 +174,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/p990/proprietary/lib/libnvmm_vp6_video.so:system/lib/libnvmm_vp6_video.so \
     vendor/lge/p990/proprietary/lib/libnvmm_writer.so:system/lib/libnvmm_writer.so \
     vendor/lge/p990/proprietary/lib/libnvmm_service.so:system/lib/libnvmm_service.so \
-    vendor/lge/p990/proprietary/lib/libsecureclock.so:system/lib/libsecureclock.so \
     vendor/lge/p990/proprietary/lib/libnvomx.so:system/lib/libnvomx.so \
     vendor/lge/p990/proprietary/lib/libnvwsi.so:system/lib/libnvwsi.so \
     vendor/lge/p990/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
@@ -175,10 +185,22 @@ PRODUCT_COPY_FILES += \
     device/lge/p990/prebuilt/rild:system/bin/rild \
     device/lge/p990/prebuilt/setup-recovery:system/bin/setup-recovery
 
+## This is a patched version of libicuuc to include the old symbols 
+#  needed by glgps
+PRODUCT_COPY_FILES += \
+    device/lge/p990/prebuilt/libicuuc.so:system/lib/libicuuc.so
+
 $(call inherit-product, build/target/product/full_base.mk)
 
 PRODUCT_LOCALES += hdpi
 
+## LGE stuffs
+PRODUCT_PACKAGES += \
+    LGEServices \
+    libbridge \
+    libbridge_jni \
+    libsecureclock \
+    secureclockd
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := p990

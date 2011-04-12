@@ -94,24 +94,25 @@ loglevel 3
     mkdir /lgdrm 0770 system audio
 ## ANDY_END
 
+### Disable cgroups for now, they're killing interactivity on the 2X
 # Create cgroup mount points for process groups
-    mkdir /dev/cpuctl
-    mount cgroup none /dev/cpuctl cpu
-    chown system system /dev/cpuctl
-    chown system system /dev/cpuctl/tasks
-    chmod 0777 /dev/cpuctl/tasks
-    write /dev/cpuctl/cpu.shares 1024
-
-    mkdir /dev/cpuctl/fg_boost
-    chown system system /dev/cpuctl/fg_boost/tasks
-    chmod 0777 /dev/cpuctl/fg_boost/tasks
-    write /dev/cpuctl/fg_boost/cpu.shares 1024
-
-    mkdir /dev/cpuctl/bg_non_interactive
-    chown system system /dev/cpuctl/bg_non_interactive/tasks
-    chmod 0777 /dev/cpuctl/bg_non_interactive/tasks
-    # 5.0 %
-    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
+#    mkdir /dev/cpuctl
+#    mount cgroup none /dev/cpuctl cpu
+#    chown system system /dev/cpuctl
+#    chown system system /dev/cpuctl/tasks
+#    chmod 0777 /dev/cpuctl/tasks
+#    write /dev/cpuctl/cpu.shares 1024
+#
+#    mkdir /dev/cpuctl/fg_boost
+#    chown system system /dev/cpuctl/fg_boost/tasks
+#    chmod 0777 /dev/cpuctl/fg_boost/tasks
+#    write /dev/cpuctl/fg_boost/cpu.shares 1024
+#
+#    mkdir /dev/cpuctl/bg_non_interactive
+#    chown system system /dev/cpuctl/bg_non_interactive/tasks
+#    chmod 0777 /dev/cpuctl/bg_non_interactive/tasks
+#    # 5.0 %
+#    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
 
 on fs
 # mount partitions
@@ -275,15 +276,15 @@ on boot
 
 # Define the memory thresholds at which the above process classes will
 # be killed.  These numbers are in pages (4k).
-    setprop ro.FOREGROUND_APP_MEM 2048
-    setprop ro.VISIBLE_APP_MEM 3072
+    setprop ro.FOREGROUND_APP_MEM 1536
+    setprop ro.VISIBLE_APP_MEM 2048
     setprop ro.PERCEPTIBLE_APP_MEM 4096
     setprop ro.HEAVY_WEIGHT_APP_MEM 4096
-    setprop ro.SECONDARY_SERVER_MEM 6144
-    setprop ro.BACKUP_APP_MEM 6144
-    setprop ro.HOME_APP_MEM 6144
-    setprop ro.HIDDEN_APP_MEM 7168
-    setprop ro.EMPTY_APP_MEM 8192
+    setprop ro.SECONDARY_SERVER_MEM 5120
+    setprop ro.BACKUP_APP_MEM 5120
+    setprop ro.HOME_APP_MEM 5120
+    setprop ro.HIDDEN_APP_MEM 5632
+    setprop ro.EMPTY_APP_MEM 6144
 
 # Write value must be consistent with the above properties.
 # Note that the driver only supports 6 slots, so we have combined some of
@@ -293,7 +294,11 @@ on boot
 
     write /proc/sys/vm/overcommit_memory 1
     write /proc/sys/vm/min_free_order_shift 4
-    write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,4096,6144,7168,8192
+    write /sys/module/lowmemorykiller/parameters/minfree 1536,2048,4096,5120,5632,6144
+    #6M,8M,12M,60M,70M,100M
+    #write /sys/module/lowmemorykiller/parameters/minfree 1536,2048,3072,15360,17920,25600
+    #original
+    #write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,4096,6144,7168,8192
 
     # Set init its forked children's oom_adj.
     write /proc/1/oom_adj -16
