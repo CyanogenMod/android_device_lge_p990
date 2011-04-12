@@ -18,4 +18,5 @@ dalvik.vm.dexopt-flags=m=y,u=n
 ro.additionalmounts=/mnt/internalsd
 
 # GSM, WCDMA preferred
-ro.telephony.default_network=0
+# This appears to be causing "Unknown" network type
+#ro.telephony.default_network=0
