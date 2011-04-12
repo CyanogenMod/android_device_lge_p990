@@ -47,7 +47,7 @@ BOARD_USE_FROYO_LIBCAMERA := true
 BOARD_HAS_LGE_FFC := true
 BOARD_NO_RGBX_8888 := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-BOARD_SUPPORTS_GRALLOC_FB_READ := ../../../device/lge/p990/include/gralloc.h
+BOARD_SUPPORTS_GRALLOC_FB_READ := ../../../device/lge/p990/include/hardware/gralloc.h
 
 BOARD_HAS_NO_MISC_PARTITION := true
 
