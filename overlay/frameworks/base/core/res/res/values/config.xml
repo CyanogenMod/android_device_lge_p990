@@ -24,6 +24,4 @@
         <item>"wl0.1"</item>
     </string-array>
 
-    <bool name="config_cameraRotatesCounterClockwise">true</bool>
-
 </resources>
