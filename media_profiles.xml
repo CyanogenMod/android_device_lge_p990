@@ -77,7 +77,20 @@
 -->
 <MediaSettings>
   <!-- Each camcorder profile defines a set of predefined configuration parameters -->
-  <CamcorderProfiles>
+  <CamcorderProfiles cameraId="0">
+
+    <EncoderProfile quality="hd" fileFormat="3gp" duration="30">
+      <Video codec="h264"
+             bitRate="6000000"
+             width="1920"
+             height="1080"
+             frameRate="25" />
+
+      <Audio codec="aac"
+             bitRate="128000"
+             sampleRate="44100"
+             channels="2" />
+    </EncoderProfile>
 
     <EncoderProfile quality="high" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -115,6 +128,43 @@
 
   </CamcorderProfiles>
 
+  <CamcorderProfiles cameraId="1">
+
+    <EncoderProfile quality="high" fileFormat="3gp" duration="30">
+      <Video codec="h264"
+             bitRate="2000000"
+             width="640"
+             height="480"
+             frameRate="25" />
+
+      <Audio codec="aac"
+             bitRate="128000"
+             sampleRate="44100"
+             channels="2" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="low" fileFormat="3gp" duration="30">
+      <Video codec="h264"
+             bitRate="384000"
+             width="176"
+             height="144"
+             frameRate="30" />
+
+      <Audio codec="amrnb"
+             bitRate="12200"
+             sampleRate="8000"
+             channels="1" />
+
+    </EncoderProfile>
+
+    <ImageEncoding quality="90" />
+    <ImageEncoding quality="80" />
+    <ImageEncoding quality="70" />
+    <ImageDecoding memCap="20000000" />
+
+    <Camera previewFrameRate="30" />
+
+  </CamcorderProfiles>
 
   <EncoderOutputFileFormat name="3gp" />
 
