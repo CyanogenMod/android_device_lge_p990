@@ -6,14 +6,15 @@
   <!--neo.shin@lge.com 2011-01-11: add SSL v2 & v3 -->
   <!--taesook.yoon@lge.com 2011-01-12: add reaiding -->
   <hal 
-	  acPortName="/dev/ttyHS3" lBaudRate="460800"  cLogEnabled="true" acLogDirectory="/mnt/sdcard/gps/log" ltoFileName="lto.dat" 
-       enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" arp-supl-interface-device="vsnet0" RILEnabled="false" 
+	  acPortName="/dev/ttyHS3" lBaudRate="460800"  cLogEnabled="true" acLogDirectory="/data/gps/log" ltoFileName="lto.dat" 
+       enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" arp-supl-interface-device="vsnet0" RILEnabled="true" 
               
        arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" arp-supl-ssl-method="SSLv23"
 	   acSuplServer="lge.glpals.com" SuplPort="7275" tlsCertPath="/system/etc/cert/" arp-supl-reaiding-time-sec="1800"
        
        LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
 	   />
+       <!--lcsApiSockName="/data/gps/lcs.socket" -->
   <hal 
        acNtpServer="10.21.116.63" acUtc2GpsOff="13"
        AsicIP="127.0.0.1" AsicPort="2375"
@@ -21,7 +22,7 @@
        ResetOnStart="false"
        gpioDelayMs="80"
        ctrlPipe="/data/gps/glgpsctrl"
-       lcsApiSockName="/data/gps/lcs.socket" 
+       lcsApiSockName="/data/gps/lcs.socket"
        acNvStoDir="/data/gps/"
        gpioNStdbyPath="/sys/devices/platform/tegra_gps_gpio/poweron"
        gpioNResetPath="/sys/devices/platform/tegra_gps_gpio/reset"

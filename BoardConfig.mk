@@ -64,7 +64,7 @@ BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 
 BOARD_USES_GPSSHIM := true
 BOARD_GPS_LIBRARIES := libgps
-## SUPL calls are causing crashes... :\
+## SUPL calls are causing crashes... :/
 BOARD_GPS_BAD_AGPS := true
 
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p990/vibrator.c
