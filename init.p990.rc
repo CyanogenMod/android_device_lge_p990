@@ -22,6 +22,7 @@ loglevel 3
     export SD_EXT_DIRECTORY /sd-ext
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/core-junit.jar
     export TMPDIR /data/local/tmp
+    export PHONE_STORAGE /mnt/emmc
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -37,7 +38,7 @@ loglevel 3
     mkdir /mnt/sdcard 0000 system system
 
 # create mountpoints for internal "SD"
-    mkdir /mnt/internalsd 0000 system system
+    mkdir /mnt/emmc 0000 system system
 
 # Create cgroup mount point for cpu accounting
     mkdir /acct
@@ -482,7 +483,7 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
     onrestart write /sys/power/state on
     onrestart restart media
     onrestart restart netd
-    onrestart restart ril-daemon
+    #onrestart restart ril-daemon
 
 service media /system/bin/mediaserver
     user media

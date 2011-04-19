@@ -9,4 +9,4 @@
 ######################
 
 dev_mount sdcard /mnt/sdcard auto /devices/platform/tegra-sdhci.2/mmc_host/mmc1
-dev_mount internalsd /mnt/internalsd 9 /devices/platform/tegra-sdhci.3/mmc_host/mmc2
+dev_mount emmc /mnt/emmc 9 /devices/platform/tegra-sdhci.3/mmc_host/mmc2
