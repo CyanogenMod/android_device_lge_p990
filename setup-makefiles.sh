@@ -97,8 +97,8 @@ PRODUCT_COPY_FILES += \\
 
 # GPS
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblge-gps.so:obj/lib/libgps.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblge-gps.so:system/lib/libgps.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:obj/lib/libgps.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:system/lib/libgps.so
 
 # OMX
 PRODUCT_COPY_FILES += \\
@@ -107,14 +107,12 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libdivxdrm.so:system/lib/libdivxdrm.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblge_divxdrm.so:system/lib/liblge_divxdrm.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libtsparser.so:system/lib/libtsparser.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvodm_dtvtuner.so:system/lib/libnvodm_dtvtuner.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libhwmediaplugin.so:system/lib/libhwmediaplugin.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libhwmediaplugin.so:obj/lib/libhwmediaplugin.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libhwmediarecorder.so:system/lib/libhwmediarecorder.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libhwmediarecorder.so:obj/lib/libhwmediarecorder.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/secureclockd:system/bin/secureclockd \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libsecureclock.so:system/lib/libsecureclock.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libbridge.so:system/lib/libbridge.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so
 
 PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/etc/flex/flex.db:system/etc/flex/flex.db \\
@@ -145,12 +143,8 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/nvmm_aacdec.axf:system/bin/nvmm_aacdec.axf \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/nvddk_audiofx_transport.axf:system/bin/nvddk_audiofx_transport.axf \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/nvddk_audiofx_core.axf:system/bin/nvddk_audiofx_core.axf \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/lgospd_hid:system/bin/lgospd_hid \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/lgospd:system/bin/lgospd \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/lgdrmserver:system/bin/lgdrmserver \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/immvibed:system/bin/immvibed \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/hdmid:system/bin/hdmid \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/btld:system/bin/btld \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/bridgeutil:system/bin/bridgeutil \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libril.so:system/lib/libril.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvos.so:system/lib/libnvos.so \\
