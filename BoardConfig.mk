@@ -17,5 +17,7 @@ TARGET_PREBUILT_KERNEL := device/lge/p990/kernel
 
 BOARD_VOLD_MAX_PARTITIONS := 9
 
-BOARD_USES_HW_MEDIARECORDER := true
-
+BOARD_USES_GPSSHIM := true
+BOARD_GPS_LIBRARIES := libgps
+## SUPL calls are causing crashes... :/
+BOARD_GPS_BAD_AGPS := true
