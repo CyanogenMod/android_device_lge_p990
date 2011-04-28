@@ -14,7 +14,8 @@ PRODUCT_COPY_FILES += \
     device/lge/p990/init.p990.rc:root/init.rc
 
 PRODUCT_COPY_FILES += \
-    device/lge/p990/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/init.vsnet:system/bin/init.vsnet \
     $(LOCAL_PATH)/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml
 
 PRODUCT_COPY_FILES += \
