@@ -98,7 +98,8 @@ PRODUCT_COPY_FILES += \\
 # GPS
 PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:obj/lib/libgps.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:system/lib/libgps.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:system/lib/libgps.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/bin/glgps:system/bin/glgps
 
 # OMX
 PRODUCT_COPY_FILES += \\
