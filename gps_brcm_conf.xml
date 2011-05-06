@@ -9,8 +9,8 @@
 	  acPortName="/dev/ttyHS3" lBaudRate="460800"  cLogEnabled="true" acLogDirectory="/data/gps/log" ltoFileName="lto.dat" 
        enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" arp-supl-interface-device="vsnet0" RILEnabled="true" 
               
-       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" arp-supl-ssl-method="SSLv23"
-	   acSuplServer="lge.glpals.com" SuplPort="7275" tlsCertPath="/system/etc/cert/" arp-supl-reaiding-time-sec="1800"
+       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" 
+	   acSuplServer="supl.google.com" SuplPort="7275" arp-supl-reaiding-time-sec="1800"
        
        LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
 	   />
@@ -22,7 +22,7 @@
        ResetOnStart="false"
        gpioDelayMs="80"
        ctrlPipe="/data/gps/glgpsctrl"
-       lcsApiSockName="/data/gps/lcs.socket"
+       lcsApiSockName="/dev/socket/gps"
        acNvStoDir="/data/gps/"
        gpioNStdbyPath="/sys/devices/platform/tegra_gps_gpio/poweron"
        gpioNResetPath="/sys/devices/platform/tegra_gps_gpio/reset"
