@@ -95,25 +95,24 @@ loglevel 3
     mkdir /lgdrm 0770 system audio
 ## ANDY_END
 
-### Disable cgroups for now, they're killing interactivity on the 2X
 # Create cgroup mount points for process groups
-#    mkdir /dev/cpuctl
-#    mount cgroup none /dev/cpuctl cpu
-#    chown system system /dev/cpuctl
-#    chown system system /dev/cpuctl/tasks
-#    chmod 0777 /dev/cpuctl/tasks
-#    write /dev/cpuctl/cpu.shares 1024
-#
-#    mkdir /dev/cpuctl/fg_boost
-#    chown system system /dev/cpuctl/fg_boost/tasks
-#    chmod 0777 /dev/cpuctl/fg_boost/tasks
-#    write /dev/cpuctl/fg_boost/cpu.shares 1024
-#
-#    mkdir /dev/cpuctl/bg_non_interactive
-#    chown system system /dev/cpuctl/bg_non_interactive/tasks
-#    chmod 0777 /dev/cpuctl/bg_non_interactive/tasks
-#    # 5.0 %
-#    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
+    mkdir /dev/cpuctl
+    mount cgroup none /dev/cpuctl cpu
+    chown system system /dev/cpuctl
+    chown system system /dev/cpuctl/tasks
+    chmod 0777 /dev/cpuctl/tasks
+    write /dev/cpuctl/cpu.shares 1024
+
+    mkdir /dev/cpuctl/fg_boost
+    chown system system /dev/cpuctl/fg_boost/tasks
+    chmod 0777 /dev/cpuctl/fg_boost/tasks
+    write /dev/cpuctl/fg_boost/cpu.shares 1024
+
+    mkdir /dev/cpuctl/bg_non_interactive
+    chown system system /dev/cpuctl/bg_non_interactive/tasks
+    chmod 0777 /dev/cpuctl/bg_non_interactive/tasks
+    # 5.0 %
+    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
 
 on fs
 # mount partitions
