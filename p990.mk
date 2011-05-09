@@ -11,7 +11,7 @@ endif
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
-    device/lge/p990/init.p990.rc:root/init.rc
+    device/lge/p990/init.p990.rc:root/init.p990.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
