@@ -10,7 +10,7 @@
        enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" RILEnabled="true" 
               
        arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" 
-                  acSuplServer="supl.google.com" SuplPort="7275" arp-supl-reaiding-time-sec="1800"
+                  acSuplServer="supl.google.com" SuplPort="7276" arp-supl-reaiding-time-sec="1800"
        
        LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
 	   />
