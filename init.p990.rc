@@ -145,6 +145,10 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -BKA wlan0  # LGE_AUTO_IP - enable IPv4L
     disabled
     oneshot
 
+service iprenew_wlan0 /system/bin/dhcpcd -n wlan0
+    disabled
+    oneshot
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_wlan0
 
