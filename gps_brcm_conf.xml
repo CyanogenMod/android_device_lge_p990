@@ -13,10 +13,9 @@
                   acSuplServer="supl.google.com" SuplPort="7276" arp-supl-reaiding-time-sec="1800"
        
        LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
+       acNtpServer="europe.pool.ntp.org" acUtc2GpsOff="13"
 	   />
-       <!--lcsApiSockName="/dev/socket/gps" -->
   <hal 
-       acNtpServer="10.21.116.63" acUtc2GpsOff="13"
        AsicIP="127.0.0.1" AsicPort="2375"
        acNmeaOutName="/data/gpspipe"  
        ResetOnStart="false"
