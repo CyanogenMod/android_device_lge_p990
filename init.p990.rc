@@ -25,6 +25,9 @@ on init
     mkdir /lgdrm 0770 system audio
 ## ANDY_END
 
+on early-init
+    start hwprops
+
 on fs
 # mount partitions
     mount ext3 /dev/block/mmcblk0p1 /system wait
@@ -136,6 +139,10 @@ on boot
 
 ### End of LGE GPS
 
+
+service hwprops /sbin/hwprops
+    disabled
+    oneshot
 
 service lgdrm /system/bin/lgdrmserver
     user root
