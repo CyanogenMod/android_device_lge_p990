@@ -182,7 +182,11 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvmm_writer.so:system/lib/libnvmm_writer.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvmm_service.so:system/lib/libnvmm_service.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvomx.so:system/lib/libnvomx.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvwsi.so:system/lib/libnvwsi.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libnvwsi.so:system/lib/libnvwsi.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblgeswcodecs.so:system/lib/liblgeswcodecs.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblgemmevrc.so:system/lib/liblgemmevrc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblgemmqcelp.so:system/lib/liblgemmqcelp.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/liblgemmec3.so:system/lib/liblgemmec3.so
 
 EOF
 
