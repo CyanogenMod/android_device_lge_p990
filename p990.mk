@@ -31,7 +31,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/libicuuc.so:system/lib/libicuuc.so
 
 PRODUCT_PACKAGES += \
-    gps.p990
+    gps.p990 \
+    lights.p990
 
 PRODUCT_NAME := p990
 PRODUCT_DEVICE := p990
