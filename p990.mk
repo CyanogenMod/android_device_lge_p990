@@ -1,7 +1,7 @@
-$(call inherit-product, device/lge/star-common/star.mk)
-
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu.mk)
+
+$(call inherit-product, device/lge/star-common/star.mk)
 
 # Inherit non-open-source blobs.
 $(call inherit-product-if-exists, vendor/lge/p990/p990-vendor.mk)
