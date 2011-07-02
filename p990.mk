@@ -25,6 +25,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/get-gps-lto:/system/bin/get-gps-lto
+
 # This is a patched version of libicuuc to include the old symbols
 # needed by glgps
 PRODUCT_COPY_FILES += \

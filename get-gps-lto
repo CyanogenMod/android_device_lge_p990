@@ -1,0 +1,17 @@
+#!/system/xbin/bash
+
+exec &> /dev/null
+
+## No DNS, unlikely network. Give it 10 seconds and
+## try again, for 5 minutes
+COUNT=30
+while [ -z "`getprop net.dns1`" -a $COUNT -gt 0 ]; do
+	sleep 10
+        let COUNT=$COUNT-1
+done
+
+find /data/gps -name lto.dat -mtime +5 -exec rm -f {} \;
+if [ ! -s /data/gps/lto.dat ]; then
+	wget -O /data/gps/lto.dat http://gllto.glpals.com/7day/latest/lto.dat
+	chmod 664 /data/gps/lto.dat
+fi
