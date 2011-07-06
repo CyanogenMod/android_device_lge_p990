@@ -7,16 +7,17 @@
   <!--taesook.yoon@lge.com 2011-01-12: add reaiding -->
   <hal 
 	  acPortName="/dev/ttyHS3" lBaudRate="460800"  cLogEnabled="true" acLogDirectory="/data/gps/log" ltoFileName="lto.dat" 
-       enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" RILEnabled="true" 
+       enhanced-assisted="false" cp-enhanced-assisted="false" TISEnabled="false" arp-supl-interface-device="vsnet0" RILEnabled="false" 
               
-       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" 
-                  acSuplServer="supl.google.com" SuplPort="7276" arp-supl-reaiding-time-sec="1800"
+       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" arp-supl-ssl-method="SSLv23"
+       acSuplServer="lge.glpals.com" SuplPort="7275" ReAidingType="3" ReAidingRetryIntervalSec="10" ReAidingIntervalSec="1800"
+       arp-supl-reaiding-time-sec="1800" arp-supl-retry-time-sec="10" tlsStopForInvPath="true" arp-supl-use-apn="true"
        
-       LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
-       acNtpServer="europe.pool.ntp.org" acUtc2GpsOff="13"
+       LbsEnable="false" LbsLocal="true" LbsServer="bcmlbsqa2.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="false" LbsSyncCells="false"
+       LbsGetGpsAssistance="true" LbsSyncLtoThresholdDays="3" LbsCellEnable="true" LbsGpsEnable="true" LbsWlanEnable="false"
 	   />
   <hal 
-       AsicIP="127.0.0.1" AsicPort="2375"
+       acNtpServer="10.21.116.63" acUtc2GpsOff="13"
        acNmeaOutName="/data/gpspipe"  
        ResetOnStart="false"
        gpioDelayMs="80"
