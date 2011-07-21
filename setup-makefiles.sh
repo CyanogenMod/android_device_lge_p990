@@ -96,9 +96,9 @@ PRODUCT_COPY_FILES += \\
 
 # GPS
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:obj/lib/libgps.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgps.so:system/lib/libgps.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/bin/glgps:system/bin/glgps
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/hw/gps.tegra.so:system/lib/hw/gps.tegra.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/bin/glgps:system/bin/glgps \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/etc/cert/lge.cer:system/etc/cert/lge.cer
 
 # OMX
 PRODUCT_COPY_FILES += \\

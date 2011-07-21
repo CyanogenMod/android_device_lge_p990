@@ -20,6 +20,7 @@ DEVICE=p990
 rm -rf ../../../vendor/$VENDOR/$DEVICE
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/bin
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/flex
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/cert
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/wl
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/egl
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
@@ -41,8 +42,9 @@ adb pull /system/etc/wl/rtecdc-mfgtest.bin ../../../vendor/$VENDOR/$DEVICE/propr
 adb pull /system/etc/wl/rtecdc.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/wl
 
 # GPS
-adb pull /system/lib/libgps.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
+adb pull /system/lib/hw/gps.tegra.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw/
 adb pull /system/bin/glgps ../../../vendor/$VENDOR/$DEVICE/proprietary/bin/
+adb pull /system/etc/cert/lge.cer ../../../vendor/$VENDOR/$DEVICE/proprietary/etc/cert/
 
 # OMX
 adb pull /system/lib/libdivxdrm.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
