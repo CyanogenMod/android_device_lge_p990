@@ -235,15 +235,3 @@ service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
     user system
     group net_raw sdcard_rw system
 
-## Manual download of long term orbit data
-service gpslto /system/bin/get-gps-lto
-    user system
-    group net_raw system
-    oneshot
-    disabled
-
-## Try updating LTO whenever glgps or wifi comes up
-on property:init.svc.wpa_supplicant=running
-    start gpslto
-on property:init.svc.glgps=running
-    start gpslto

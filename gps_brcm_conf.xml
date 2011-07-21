@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
-  <!--HAL Confguration: Please make sure to split the hal configuration when it's bigger than 1K bytes. -->
+<!--HAL Confguration  -->
   <!--taesook.yoon@lge.com : log setting -cLogEnabled="false" ,acLogDirectory="/mnt/sdcard/gps/log" , LogFacMask= select all -->
   <!--taesook.yoon@lge.com 2010-12-29 - add arp-supl-interface-device="vsnet0" for SKT -Device can not connect SKT's SUPL server in wifi connection state -->
   <!--neo.shin@lge.com 2011-01-11: add SSL v2 & v3 -->
   <!--taesook.yoon@lge.com 2011-01-12: add reaiding -->
+  <!--neo.shin@lge.com 2011-03-31: Change Reading Interval Time, add Reaiding Type & Reaiding Retry Time-->
+  <!--neo.shin@lge.com 2011-03-31: add LTO options-->
+  <!--taesook.yoon@lge.com 2011-05-11: cp-enhanced-assisted :  tmo =false ,other =true -->
+  <!--taesook.yoon@lge.com 2011-05-11: cp-cold-start="false"( set auto cold start in cp) ,  cp-guard-time-sec="1" (consider network delay time) , only used in CP test mode -->
+  <!--taesook.yoon@lge.com 2011-05-13:  for connect vdf supl server - arp-supl-ssl-method="SSLv3-->
+  
+
   <hal 
 	  acPortName="/dev/ttyHS3" lBaudRate="460800"  cLogEnabled="true" acLogDirectory="/data/gps/log" ltoFileName="lto.dat" 
-       enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" RILEnabled="true" 
+       enhanced-assisted="false" cp-enhanced-assisted="true" TISEnabled="false" RILEnabled="false" 
               
-       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" 
-                  acSuplServer="supl.google.com" SuplPort="7276" arp-supl-reaiding-time-sec="1800"
-       
-       LbsEnable="true" LbsLocal="true" LbsServer="bcmls.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="true" LbsSyncCells="true"
-       acNtpServer="europe.pool.ntp.org" acUtc2GpsOff="13"
+       arp-supl-enable="true" arp-supl-cap-msb="true" arp-supl-cap-msa="true" arp-supl-cap-ecid="false" arp-supl-ssl-method="SSLv23"
+       acSuplServer="lge.glpals.com" SuplPort="7275" tlsCertPath="/system/etc/cert/lge.cer" ReAidingType="3" ReAidingRetryIntervalSec="10" ReAidingIntervalSec="1800"
+
+       LbsEnable="false" LbsLocal="true" LbsServer="bcmlbsqa2.glpals.com" LbsPort="7275" LbsSyncTimeSec = "60" LbsSyncLto="false" LbsSyncCells="false"
+       LbsGetGpsAssistance="true" LbsSyncLtoThresholdDays="3" LbsCellEnable="true" LbsGpsEnable="true" LbsWlanEnable="false"
 	   />
   <hal 
+       acNtpServer="10.21.116.63" acUtc2GpsOff="13"
        AsicIP="127.0.0.1" AsicPort="2375"
        acNmeaOutName="/data/gpspipe"  
        ResetOnStart="false"
@@ -51,9 +59,9 @@ s="0" pps-width-ns="100"
 
   <gll 
        LogPriMask="LOG_DEBUG"
-       LogFacMask="LOG_GLLAPI | LOG_DEVIA | LOG_NMEA | LOG_RAWDATA | LOG_DEVMS | LOG_ASIC_IO | LOG_BBTEST | LOG_DEVET | LOG_MESM | LOG_DEVKF | LOG_DEVJG | LOG_DEVMR" 
+   LogFacMask="LOG_GLLAPI | LOG_DEVIA | LOG_NMEA | LOG_RAWDATA | LOG_DEVMS | LOG_ASIC_IO | LOG_BBTEST | LOG_DEVET | LOG_MESM | LOG_DEVKF | LOG_DEVJG | LOG_DEVMR | LOG_DEVCV"
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"   
-       RfType="GL_RF_4751_DANUBE"   
+   RfType="GL_RF_4751_DANUBE"   
   />
 
   <!-- List of jobs can be performed by the GPS controller    -->
