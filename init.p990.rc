@@ -86,7 +86,8 @@ on boot
 # light controls
     chown system system /sys/class/leds/buttonpanel/brightness
     chown system system /sys/class/leds/buttonpanel/enable
-    chown system system /sys/class/leds/buttonpanel/blink
+    chown system system /sys/class/leds/buttonpanel/pulse
+    chown system system /sys/class/leds/buttonpanel/pulse_interval
 
 # 20101107, sglee76@lge.com, FOTA [START]
         mkdir /data/fota 0777 system system
