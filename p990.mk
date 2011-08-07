@@ -1,6 +1,3 @@
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_eu.mk)
-
 $(call inherit-product, device/lge/star-common/star.mk)
 
 # Inherit non-open-source blobs.
@@ -19,6 +16,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/init.vsnet:system/bin/init.vsnet \
+    $(LOCAL_PATH)/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml
 
 PRODUCT_COPY_FILES += \
