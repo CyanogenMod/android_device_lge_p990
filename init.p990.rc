@@ -171,6 +171,11 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
     disabled
     oneshot
 
+service secureclockd /system/bin/secureclockd
+    oneshot
+    user system
+    group system
+
 service hdmid /system/bin/hdmid
     user system
     group system
