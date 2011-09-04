@@ -30,13 +30,13 @@ on early-init
 
 on fs
 # mount partitions
-    mount ext3 /dev/block/mmcblk0p1 /system wait
-    mount ext3 /dev/block/mmcblk0p1 /system ro noatime remount wait
+    mount ext4 /dev/block/mmcblk0p1 /system wait
+    mount ext4 /dev/block/mmcblk0p1 /system ro noatime remount barrier=1 wait
     # We chown/chmod /data again so because mount is run as root + defaults
-    mount ext3 /dev/block/mmcblk0p8 /data nosuid nodev noatime data=ordered wait
+    mount ext4 /dev/block/mmcblk0p8 /data nosuid nodev noatime barrier=1 wait
     chown system system /data
     chmod 0771 /data
-    mount ext3 /dev/block/mmcblk0p2 /cache nosuid nodev noatime wait
+    mount ext4 /dev/block/mmcblk0p2 /cache nosuid nodev noatime barrier=1 wait
     chown system cache /cache
     chmod 0770 /cache
 
