@@ -236,3 +236,12 @@ service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
     user system
     group net_raw sdcard_rw system
 
+service incall-audio /system/bin/incall-audio
+    disabled
+    oneshot
+
+on property:ril.call.status=1
+    start incall-audio
+
+on property:ril.call.status=0
+    stop incall-audio
