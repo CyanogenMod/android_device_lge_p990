@@ -4,6 +4,9 @@ cid=$1
 ifaceid=$(($cid-1))
 
 VSNET_IP=`/system/bin/getprop net.pdp$cid.ip`
+/system/bin/setprop "net.vsnet$ifaceid.ip" $VSNET_IP
+/system/bin/setprop "net.vsnet$ifaceid.gw" $VSNET_IP
+
 /system/bin/log -t vsnet "Starting vsnet$ifaceid($VSNET_IP) for cid=$cid"
 
 ifconfig vsnet$ifaceid $VSNET_IP || {
@@ -12,9 +15,9 @@ ifconfig vsnet$ifaceid $VSNET_IP || {
     exit 1;
 }
 
-route add default dev vsnet$ifaceid
-/system/bin/log -t vsnet "ifconfig for vsnet$ifaceid finished successfully";
 /system/bin/setprop "net.vsnet$ifaceid.local-ip" $VSNET_IP
 /system/bin/setprop "net.vsnet$ifaceid.remote-ip" $VSNET_IP
 /system/bin/setprop net.interfaces.defaultroute gprs
+#route add default dev vsnet$ifaceid
+/system/bin/log -t vsnet "ifconfig for vsnet$ifaceid finished successfully";
 /system/bin/setprop "net.pdp$cid.svc_done" "1"
