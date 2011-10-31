@@ -21,3 +21,6 @@ ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
 # GSM, WCDMA preferred
 # This appears to be causing "Unknown" network type
 #ro.telephony.default_network=0
+
+# NITZ in local time
+ro.telephony.nitz=local
