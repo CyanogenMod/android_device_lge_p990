@@ -135,6 +135,7 @@ adb pull /system/lib/liblgeswcodecs.so ../../../vendor/$VENDOR/$DEVICE/proprieta
 adb pull /system/lib/liblgemmevrc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 adb pull /system/lib/liblgemmqcelp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 adb pull /system/lib/liblgemmec3.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
+adb pull /system/lib/liblgemmdts.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 adb pull /system/lib/libnvodm_hdmi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 adb pull /system/lib/liblvvil.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 
