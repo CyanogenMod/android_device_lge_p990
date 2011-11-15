@@ -8,9 +8,6 @@ ro.sf.lcd_density=240
 
 mobiledata.interfaces=vsnet0,vsnet1,vsnet2,vsnet3
 
-# We can afford the 32m
-dalvik.vm.heapsize=32m
-
 # hold precise GC data, and use SMP
 dalvik.vm.dexopt-flags=m=y,u=n
 

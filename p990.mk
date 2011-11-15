@@ -16,7 +16,8 @@ endif
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
-    device/lge/p990/init.p990.rc:root/init.p990.rc
+    device/lge/p990/init.p990.rc:root/init.p990.rc \
+    $(LOCAL_PATH)/ueventd.tegra.rc:root/ueventd.p990.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
@@ -27,6 +28,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
-PRODUCT_NAME := p990
+PRODUCT_PACKAGES += \
+    lights.p990 \
+    audio.primary.p990
+    #audio_policy.p990
+
+PRODUCT_NAME := full_p990
 PRODUCT_DEVICE := p990
-PRODUCT_MODEL := LG Optimus 2X
+PRODUCT_MODEL := LG-P990
