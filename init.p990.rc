@@ -152,7 +152,6 @@ on boot
 
 ### End of LGE GPS
 
-
 service hwprops /sbin/hwprops
     class core
     disabled
@@ -217,6 +216,8 @@ service motion /system/bin/motion
 on property:dev.bootcomplete=1
     start hdmid
     start motion
+### KSM
+    write /sys/kernel/mm/ksm/run 1
 
 service rawip_vsnet1 /system/bin/init.vsnet 1
     class main
