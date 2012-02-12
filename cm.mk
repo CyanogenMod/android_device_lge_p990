@@ -12,7 +12,6 @@ PRODUCT_NAME := cm_p990
 # Release name and versioning
 PRODUCT_RELEASE_NAME := Optimus2X
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
--include vendor/cm/config/common_versions.mk
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := p990
