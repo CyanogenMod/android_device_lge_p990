@@ -152,6 +152,8 @@ on boot
 
 ### End of LGE GPS
 
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq
+
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
