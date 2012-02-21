@@ -2,7 +2,7 @@ import init.star.usb.rc
 
 on init
     export TMPDIR /data/local/tmp
-    export PHONE_STORAGE /mnt/emmc
+    export SECONDARY_STORAGE /mnt/emmc
     export EXTERNAL_STORAGE /mnt/sdcard
 
 # Backward compatibility
