@@ -23,3 +23,35 @@
 /dev/motion_daemon	0666	system	system
 /dev/accel_daemon	0666	system	system
 /dev/tegra_user_gpio	0666	system	system
+/dev/nvos       0666    system  system
+/dev/nvrm       0666    system  system
+/dev/knvmap     0660    system  system
+/dev/nvmap      0666    system  system
+/dev/ov5650     0660    media   camera
+/dev/ad5820     0660    media   camera
+/dev/soc380     0660    media   camera
+/dev/tegra_camera       0660    media   camera
+/dev/imx073     0660    media   camera
+/dev/mt9m113    0660    media   camera
+/dev/dw9712     0660    media   camera
+/dev/tegra_avp  0660    media   media
+/dev/tegra_rpc  0660    media   media
+/dev/tegra_sema 0660    media media
+/dev/tegra_mediaserver  0660    media   media
+/dev/tegra_dc*  0660    system  system
+/dev/ttyACM*    0660    radio   system
+/dev/ttyACM3    0660    radio   log
+/dev/ttyspi*    0660    radio   radio
+/dev/pts*       0660    radio   radio
+/dev/tf_driver  0666    system  system
+/dev/ion        0666    system  system
+
+#MOBII_CHNANGE_S 20120213 mg.chang@mobii.co.kr : Appy Sensor Porting
+#for Sensors
+/dev/mpu                  0660   system     system
+/dev/mpuirq               0660   system     system
+/dev/accelirq             0660   system     system
+/dev/compassirq           0660   system     system
+/dev/timerirq             0660   system     system
+#MOBII_CHNANGE_E 20120213 mg.chang@mobii.co.kr : Appy Sensor Porting
+/dev/tspdrv     0666    root    root

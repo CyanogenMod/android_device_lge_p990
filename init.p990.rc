@@ -31,7 +31,8 @@ on init
 ## ANDY_END
 
 on early-init
-    start hwprops
+    write /sys/class/firmware/timeout 5
+    #start hwprops
 
 on fs
 # mount partitions
@@ -73,6 +74,41 @@ on post-fs
     setprop vold.post_fs_data_done 1
 
 on boot
+
+# Hall IC
+    chmod 0644 /sys/devices/platform/star_hall/onoff
+    chmod 0644 /sys/devices/platform/star_hall/sensing
+    chown system system /sys/devices/platform/star_hall/onoff
+    chown system system /sys/devices/platform/star_hall/sensing
+
+# Proximity
+    chmod 0644 /sys/devices/platform/tegra-i2c.1/i2c-2/2-0044/status
+    chmod 0644 /sys/devices/platform/tegra-i2c.1/i2c-2/2-0044/enable
+    chown system system /sys/devices/platform/tegra-i2c.1/i2c-2/2-0044/status
+    chown system system /sys/devices/platform/tegra-i2c.1/i2c-2/2-0044/enable
+#MOBII_CHNANGE_E 20120213 mg.chang@mobii.co.kr : Appy Sensor Porting
+
+# Battery
+
+# audio
+    chmod 0664 /sys/power/suspend/mode
+    chown system audio /sys/power/suspend/mode
+# LGE_CHANGE_S [chahee.kim@lge.com] 2012-02-15
+    chown audio audio /dev/pts29
+# LGE_CHANGE_E [chahee.kim@lge.com] 2012-02-15
+
+
+# Power management settings
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 216000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
+    write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
+    write /sys/module/cpuidle/parameters/lp2_in_idle 1
+
+
     setprop net.tcp.buffersize.default 4096,87380,196608,4096,16384,110208
     setprop net.tcp.buffersize.wifi 4096,87380,393216,4096,16384,110208
     setprop net.tcp.buffersize.umts 4096,87380,393216,4096,16384,110208
@@ -87,8 +123,8 @@ on boot
     chown system system /sys/devices/platform/tegra_gyro_accel/snap_onoff
     chown system system /sys/devices/platform/tegra_gyro_accel/flip_onoff
     chown system system /sys/devices/platform/tegra_gyro_accel/tilt_delay
-    chown system system /sys/devices/platform/star_aat2870.0/lsensor_onoff
-    chown system system /sys/devices/platform/star_aat2870.0/alc
+    chown system system /sys/devices/platform/i2c-gpio.5/i2c-5/5-0060/lsensor_onoff
+    chown system system /sys/devices/platform/i2c-gpio.5/i2c-5/5-0060/alc
 
 # light controls
     chown system system /sys/class/leds/buttonpanel/brightness
@@ -126,8 +162,8 @@ on boot
 
 ### LGE GPS
 # gps permissions
-    chown system system /sys/devices/platform/tegra_gps_gpio/poweron
-    chown system system /sys/devices/platform/tegra_gps_gpio/reset
+    chown system system /sys/devices/platform/gps_gpio/poweron
+    chown system system /sys/devices/platform/gps_gpio/reset
     chown system system /dev/ttyHS3
     mkdir /data/gps
     chmod 777 /data/gps
@@ -191,17 +227,17 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
     disabled
     oneshot
 
-service secureclockd /system/bin/secureclockd
-    class main
-    oneshot
-    user system
-    group system
+#service secureclockd /system/bin/secureclockd
+#    class main
+#    oneshot
+#    user system
+#    group system
 
-service hdmid /system/bin/hdmid
-    class main
-    user system
-    group system
-    disabled
+#service hdmid /system/bin/hdmid
+#    class main
+#    user system
+#    group system
+#    disabled
 
 ## disable immersion vibrator, we want the standard API
 #service immvibed /system/bin/immvibed
@@ -209,18 +245,27 @@ service hdmid /system/bin/hdmid
 #    group shell
 #    oneshot
 
-service nvrm_daemon /system/bin/nvrm_daemon
-    class core
+on boot
+    setprop nvcpud.enabled true
+    setprop nvcpud.config_refresh_ms -1
+
+service nvcpud /system/bin/nvcpud
+    class main
     user root
-    #onrestart restart servicemanager
+    group root
+
+# Start AGPS daemon
+service agps-daemon /system/bin/agpsd
+    class main
+    user radio
 
 # Daemon for Gyro Sensor
-service motion /system/bin/motion
-    class main
-    user system
-    group system
-    oneshot
-    disabled
+#service motion /system/bin/motion
+#    class main
+#    user system
+#    group system
+#    oneshot
+#    disabled
 
 on property:dev.bootcomplete=1
     start hdmid
@@ -257,7 +302,7 @@ service rawip_vsnet4 /system/bin/init.vsnet 4
    oneshot
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
-    --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0735.0745.hcd /dev/ttyHS2
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS2
     class main
     user bluetooth
     group bluetooth net_bt_admin
