@@ -176,7 +176,7 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -BKAL
     disabled
     oneshot
 
-service iprenew_wlan0 /system/bin/dhcpcd -n wlan0
+service iprenew_wlan0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
