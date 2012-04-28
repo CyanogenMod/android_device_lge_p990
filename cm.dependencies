@@ -1,0 +1,11 @@
+[
+ {
+   "repository": "android_device_lge_star-common",
+   "target_path": "device/lge/star-common"
+ },
+ {
+   "repository": "lge-kernel-star",
+   "target_path": "kernel/lge/lge-kernel-star",
+   "branch": "android-tegra-2.6.32-ics"
+ }
+]
