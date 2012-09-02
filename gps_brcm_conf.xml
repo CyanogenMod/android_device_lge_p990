@@ -31,8 +31,8 @@
        ctrlPipe="/data/gps/glgpsctrl"
        lcsApiSockName="/data/gps/lcs.socket"
        acNvStoDir="/data/gps/"
-       gpioNStdbyPath="/sys/devices/platform/tegra_gps_gpio/poweron"
-       gpioNResetPath="/sys/devices/platform/tegra_gps_gpio/reset"
+       gpioNStdbyPath="/sys/devices/platform/gps_gpio/poweron"
+       gpioNResetPath="/sys/devices/platform/gps_gpio/reset"
        />
   <!-- Sample HAL Conf to enable TLS CA checking and GPIO setting.
        acSuplServer="www.spirent-lcs.com" SuplPort="7275" tlsCertPath="/system/etc/spirentroot.cer" 
@@ -98,8 +98,7 @@ s="0" pps-width-ns="100"
   <job id="sim-cold-auto">
     <task id="periodic-eph-tm-clk" repeat="10">
       <!-- Instructs GLL to ignore frequency read from NVSTORAGE -->
-      <startup ignore_osc="true"  ignoadb shell chmod 777 /system/bin/gpsd/glgps_tmp
-re_rom_alm="true"  ignore_nav="true" ignore_pos="false" ignore_ram_alm="true" ignore_time="false"/>
+      <startup ignore_osc="true"  ignore_rom_alm="true"  ignore_nav="true" ignore_pos="false" ignore_ram_alm="true" ignore_time="false"/>
       <req_pos />
     </task>
   </job>
