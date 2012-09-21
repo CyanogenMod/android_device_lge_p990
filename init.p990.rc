@@ -267,6 +267,7 @@ on property:dev.bootcomplete=1
     start motion
 ### KSM
     write /sys/kernel/mm/ksm/run 1
+    start setcpversion
 
 service rawip_vsnet1 /system/bin/init.vsnet 1
     class main
@@ -308,3 +309,6 @@ service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
     user system
     group net_raw sdcard_rw system
 
+service setcpversion /system/bin/lgcpversion
+    class main
+    oneshot
