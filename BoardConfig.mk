@@ -3,7 +3,8 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := p990
 
-BOARD_KERNEL_CMDLINE := tegraid=20.1.3.0.0 mem=512M@0M vmalloc=128M androidboot.serialno=0280400143208517 video=tegrafb console=ttyS0,115200n8 debug_uartport=lsport,-3 androidboot.mode=normal usbcore.old_scheme_first=1 lp0_vec=8192@0x142f3000 tegra_fbmem=3073920@0x14003000 muic_state=0 tegraboot=sdmmc tegrapart=recovery:35e00:2800:800,linux:34700:1000:800,mbr:400:200:800,system:600:2bc00:800,cache:2c200:8000:800,misc:34200:400:800,userdata:38700:c0000:800
+BOARD_KERNEL_CMDLINE := 
+
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_PAGE_SIZE := 0x00000800
 
@@ -14,7 +15,10 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 665681920
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1170259968
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/lge/p990/kernel
+# Try to build the kernel
+TARGET_KERNEL_CONFIG := cyanogenmod_p990_defconfig
+
+#TARGET_PREBUILT_KERNEL := device/lge/p990/kernel
 
 BOARD_VOLD_MAX_PARTITIONS := 10
 
