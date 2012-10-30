@@ -6,6 +6,6 @@
  {
    "repository": "lge-kernel-star",
    "target_path": "kernel/lge/star",
-   "branch": "cm-star-2.6.39"
+   "branch": "jellybean"
  }
 ]
