@@ -82,6 +82,7 @@ lib/libnvmm_manager.so
 lib/libnvomxilclient.so
 lib/liblvvewrapper.so
 lib/libasound.so
+lib/libasound_module_rate_speexrate.so
 lib/libnvmm_writer.so
 lib/libnvodm_misc.so
 lib/libnvmm_audio.so
