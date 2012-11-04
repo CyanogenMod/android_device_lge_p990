@@ -1,7 +1,7 @@
 #
 # system.prop for p990
 #
-rild.libpath=/system/lib/lge-ril.so
+rild.libpath=/system/lib/liblgeril.so
 rild.libargs=-d /dev/ttyspi0
 
 ro.sf.lcd_density=240
@@ -10,10 +10,6 @@ mobiledata.interfaces=vsnet0,vsnet1,vsnet2,vsnet3
 
 # hold precise GC data, and use SMP
 dalvik.vm.dexopt-flags=m=y,u=n
-
-# Mount the internal SD card, too
-ro.additionalmounts=/mnt/emmc
-ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
 
 # GSM, WCDMA preferred
 # This appears to be causing "Unknown" network type

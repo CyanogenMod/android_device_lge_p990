@@ -65,7 +65,7 @@ lib/liblge_divxdrm.so
 lib/libaudioservice.so
 lib/libnvddk_2d.so
 lib/libsktdrm_sf.so
-lib/lge-ril.so
+lib/liblgeril.so
 lib/libnvmm_parser.so
 lib/libnvomx.so
 lib/liblgemmqcelp.so
