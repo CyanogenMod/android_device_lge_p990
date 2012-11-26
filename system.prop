@@ -18,3 +18,5 @@ dalvik.vm.dexopt-flags=m=y,u=n
 # Add LGE's release identifier. hwmediaplugin checks for this when
 # the network string contains "Vodafone", and crashes if absent
 ro.build.lge.version.release=LGP990-V20l
+
+ro.telephony.ril_class=LGEInfineon
