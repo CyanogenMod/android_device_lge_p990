@@ -11,7 +11,8 @@ $(call inherit-product-if-exists, vendor/lge/p990/p990-vendor.mk)
 # Board-specific init
 PRODUCT_COPY_FILES += \
     device/lge/p990/init.p990.rc:root/init.star.rc \
-    $(LOCAL_PATH)/ueventd.tegra.rc:root/ueventd.star.rc
+    $(LOCAL_PATH)/ueventd.tegra.rc:root/ueventd.star.rc \
+    $(LOCAL_PATH)/fstab.p990:root/fstab.p990
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
