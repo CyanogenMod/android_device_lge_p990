@@ -22,6 +22,9 @@ import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -53,6 +56,29 @@ public class LGEInfineon extends RIL implements CommandsInterface {
     protected int mCallState = TelephonyManager.CALL_STATE_IDLE;
 
     private int RIL_REQUEST_HANG_UP_CALL = 182;
+
+    /* We're not actually changing REQUEST_GET_IMEI, but it's one
+       of the first requests made after enabling the radio, and it
+       isn't repeated while the radio is on, so a good candidate to
+       inject initialization ops */
+
+    @Override
+    public void
+    getIMEI(Message result) {
+        // RIL_REQUEST_LGE_SEND_COMMAND
+        RILRequest rrLSC = RILRequest.obtain(
+                0x112, null);
+        rrLSC.mp.writeInt(1);
+        rrLSC.mp.writeInt(0);
+        send(rrLSC);
+
+        // The original (and unmodified) IMEI request
+        RILRequest rr = RILRequest.obtain(RIL_REQUEST_GET_IMEI, result);
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+        send(rr);
+    }
 
     @Override
     public void
@@ -188,7 +214,7 @@ public class LGEInfineon extends RIL implements CommandsInterface {
         String [] hourbreak = parcelitem[1].split("[\\+-]");
         parceldata = parcelitem[0] + "," + hourbreak[0]; // assuming there is always one comma at least
         tzoffset = Integer.parseInt(hourbreak[1]); // TZ diff in quarter-hours
-        if (parcelitem[1].matches("-")) tzoffset *= -1;
+        if (parcelitem[1].matches(".*-[0-9]+$")) tzoffset *= -1;
 
         parcelextra = (parcelitem.length > 2 ? parcelitem[2] : "0");
         dst = Integer.parseInt(parcelextra);
@@ -217,4 +243,86 @@ public class LGEInfineon extends RIL implements CommandsInterface {
         return response;
     }
 
+    @Override
+    protected Object
+    responseCallList(Parcel p) {
+        int num;
+        int voiceSettings;
+        ArrayList<DriverCall> response;
+        DriverCall dc;
+
+        num = p.readInt();
+        response = new ArrayList<DriverCall>(num);
+
+        if (RILJ_LOGV) {
+            riljLog("responseCallList: num=" + num +
+                    " mEmergencyCallbackModeRegistrant=" + mEmergencyCallbackModeRegistrant +
+                    " mTestingEmergencyCall=" + mTestingEmergencyCall.get());
+        }
+        for (int i = 0 ; i < num ; i++) {
+            dc = new DriverCall();
+
+            dc.state = DriverCall.stateFromCLCC(p.readInt());
+            dc.index = p.readInt();
+            dc.TOA = p.readInt();
+            dc.isMpty = (0 != p.readInt());
+            dc.isMT = (0 != p.readInt());
+            dc.als = p.readInt();
+            voiceSettings = p.readInt();
+            dc.isVoice = (0 == voiceSettings) ? false : true;
+            dc.isVoicePrivacy = (0 != p.readInt());
+            dc.number = p.readString();
+            int np = p.readInt();
+            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
+            dc.name = p.readString();
+            dc.namePresentation = p.readInt();
+            int uusInfoPresent = p.readInt();
+            if (uusInfoPresent == 1) {
+                dc.uusInfo = new UUSInfo();
+                dc.uusInfo.setType(p.readInt());
+                dc.uusInfo.setDcs(p.readInt());
+                byte[] userData = p.createByteArray();
+                dc.uusInfo.setUserData(userData);
+                riljLogv(String.format("Incoming UUS : type=%d, dcs=%d, length=%d",
+                                dc.uusInfo.getType(), dc.uusInfo.getDcs(),
+                                dc.uusInfo.getUserData().length));
+                riljLogv("Incoming UUS : data (string)="
+                        + new String(dc.uusInfo.getUserData()));
+                riljLogv("Incoming UUS : data (hex): "
+                        + IccUtils.bytesToHexString(dc.uusInfo.getUserData()));
+            } else {
+                riljLogv("Incoming UUS : NOT present!");
+            }
+
+            // star current calls come with additional info in the parcel,
+            // read it to forward the position
+            p.readString(); //cdnipNumber
+            p.readInt(); //signal
+
+            // Make sure there's a leading + on addresses with a TOA of 145
+            dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
+
+            response.add(dc);
+
+            if (dc.isVoicePrivacy) {
+                mVoicePrivacyOnRegistrants.notifyRegistrants();
+                riljLog("InCall VoicePrivacy is enabled");
+            } else {
+                mVoicePrivacyOffRegistrants.notifyRegistrants();
+                riljLog("InCall VoicePrivacy is disabled");
+            }
+        }
+
+        Collections.sort(response);
+
+        if ((num == 0) && mTestingEmergencyCall.getAndSet(false)) {
+            if (mEmergencyCallbackModeRegistrant != null) {
+                riljLog("responseCallList: call ended, testing emergency call," +
+                            " notify ECM Registrants");
+                mEmergencyCallbackModeRegistrant.notifyRegistrant();
+            }
+        }
+
+        return response;
+    }
 }

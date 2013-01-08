@@ -15,8 +15,9 @@ dalvik.vm.dexopt-flags=m=y,u=n
 # This appears to be causing "Unknown" network type
 #ro.telephony.default_network=0
 
-# Add LGE's release identifier. hwmediaplugin checks for this when
-# the network string contains "Vodafone", and crashes if absent
-ro.build.lge.version.release=LGP990-V20l
-
 ro.telephony.ril_class=LGEInfineon
+
+#
+# Enable RIL recovery
+persist.radio.rr.enable=1
+
