@@ -13,6 +13,10 @@ PRODUCT_NAME := cm_p990
 PRODUCT_RELEASE_NAME := Optimus2X
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
 
+# Boot Animation
+TARGET_SCREEN_HEIGHT := 480
+TARGET_SCREEN_WIDTH := 800
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := p990
 
