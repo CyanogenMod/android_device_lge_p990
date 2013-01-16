@@ -19,8 +19,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.vsnet-down:system/bin/init.vsnet-down \
     $(LOCAL_PATH)/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
+# Build kernel module instead of copying
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
 
 PRODUCT_PACKAGES += \
     lgcpversion
